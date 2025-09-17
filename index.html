@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>팟캐스트 생성기</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎙️ 팟캐스트 웹사이트 생성기</h1>
+            <p>MP3 파일을 업로드하여 팟캐스트 웹사이트를 생성하세요</p>
+        </header>
+
+        <main>
+            <div class="upload-section">
+                <div class="upload-area" id="uploadArea">
+                    <div class="upload-content">
+                        <div class="upload-icon">📁</div>
+                        <h3>MP3 파일을 드래그하거나 클릭하여 업로드</h3>
+                        <p>지원 형식: .mp3</p>
+                        <input type="file" id="fileInput" accept=".mp3" hidden>
+                        <button class="upload-btn" onclick="document.getElementById('fileInput').click()">
+                            파일 선택
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="podcast-info" id="podcastInfo" style="display: none;">
+                <h3>팟캐스트 정보</h3>
+                <div class="form-group">
+                    <label for="podcastTitle">제목:</label>
+                    <input type="text" id="podcastTitle" placeholder="예: 오늘의 AI 뉴스" value="오늘의 AI 뉴스">
+                </div>
+                <div class="form-group">
+                    <label for="podcastDescription">설명:</label>
+                    <textarea id="podcastDescription" placeholder="팟캐스트에 대한 설명을 입력하세요">오늘의 주요 AI 뉴스를 들어보세요!</textarea>
+                </div>
+                <button class="generate-btn" id="generateBtn">웹사이트 생성</button>
+            </div>
+
+            <div class="preview-section" id="previewSection" style="display: none;">
+                <h3>생성된 웹사이트 미리보기</h3>
+                <div class="preview-container">
+                    <iframe id="previewFrame" src="" width="100%" height="400"></iframe>
+                </div>
+                <div class="download-section">
+                    <button class="download-btn" id="downloadBtn">파일 다운로드</button>
+                    <a id="downloadLink" style="display: none;"></a>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
