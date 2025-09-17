@@ -3,52 +3,62 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>팟캐스트 생성기</title>
+    <title>팟캐스트 사이트 생성기</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
         <header>
-            <h1>🎙️ 팟캐스트 웹사이트 생성기</h1>
-            <p>MP3 파일을 업로드하여 팟캐스트 웹사이트를 생성하세요</p>
+            <h1>🎵 팟캐스트 사이트 생성기</h1>
+            <p>음원 파일을 업로드하면 자동으로 팟캐스트 사이트를 생성합니다</p>
         </header>
 
         <main>
             <div class="upload-section">
                 <div class="upload-area" id="uploadArea">
-                    <div class="upload-content">
-                        <div class="upload-icon">📁</div>
-                        <h3>MP3 파일을 드래그하거나 클릭하여 업로드</h3>
-                        <p>지원 형식: .mp3</p>
-                        <input type="file" id="fileInput" accept=".mp3" hidden>
-                        <button class="upload-btn" onclick="document.getElementById('fileInput').click()">
-                            파일 선택
-                        </button>
+                    <div class="upload-icon">🎵</div>
+                    <h3>음원 파일을 드래그하거나 클릭하여 업로드</h3>
+                    <p>MP3, WAV, OGG 파일을 지원합니다</p>
+                    <input type="file" id="audioFile" accept="audio/*" hidden>
+                    <button class="upload-btn" onclick="document.getElementById('audioFile').click()">
+                        파일 선택
+                    </button>
+                </div>
+            </div>
+
+            <div class="form-section" id="formSection" style="display: none;">
+                <h3>팟캐스트 정보 입력</h3>
+                <form id="podcastForm">
+                    <div class="form-group">
+                        <label for="title">제목 *</label>
+                        <input type="text" id="title" name="title" required>
                     </div>
-                </div>
+                    
+                    <div class="form-group">
+                        <label for="description">설명</label>
+                        <textarea id="description" name="description" rows="4"></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="author">작성자</label>
+                        <input type="text" id="author" name="author">
+                    </div>
+                    
+                    
+                    <button type="submit" class="generate-btn">팟캐스트 사이트 생성</button>
+                </form>
             </div>
 
-            <div class="podcast-info" id="podcastInfo" style="display: none;">
-                <h3>팟캐스트 정보</h3>
-                <div class="form-group">
-                    <label for="podcastTitle">제목:</label>
-                    <input type="text" id="podcastTitle" placeholder="예: 오늘의 AI 뉴스" value="오늘의 AI 뉴스">
-                </div>
-                <div class="form-group">
-                    <label for="podcastDescription">설명:</label>
-                    <textarea id="podcastDescription" placeholder="팟캐스트에 대한 설명을 입력하세요">오늘의 주요 AI 뉴스를 들어보세요!</textarea>
-                </div>
-                <button class="generate-btn" id="generateBtn">웹사이트 생성</button>
-            </div>
-
-            <div class="preview-section" id="previewSection" style="display: none;">
-                <h3>생성된 웹사이트 미리보기</h3>
-                <div class="preview-container">
-                    <iframe id="previewFrame" src="" width="100%" height="400"></iframe>
-                </div>
-                <div class="download-section">
-                    <button class="download-btn" id="downloadBtn">파일 다운로드</button>
-                    <a id="downloadLink" style="display: none;"></a>
+            <div class="result-section" id="resultSection" style="display: none;">
+                <h3>생성 완료!</h3>
+                <div class="result-info">
+                    <p>팟캐스트 사이트가 성공적으로 생성되었습니다.</p>
+                    <div class="file-info">
+                        <strong>생성된 파일:</strong> <span id="generatedFileName"></span>
+                    </div>
+                    <div class="preview-link">
+                        <a href="#" id="previewLink" target="_blank">사이트 미리보기</a>
+                    </div>
                 </div>
             </div>
         </main>
